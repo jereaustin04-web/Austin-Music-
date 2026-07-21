@@ -1,24 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Austin Music</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Austin Website</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+}
+
+.container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>Austin Music</h1>
-
-<h2>Upload Song</h2>
-
-<input type="file" id="songFile" accept="audio/*">
-
-<br><br>
-
-<audio id="player" controls></audio>
+<header>
+<h1>Welcome To My Website</h1>
+<p>Creative • Modern • Professional</p>
+</header>
 
 
-<script src="script.js"></script>
+<div class="container">
+
+<div class="card">
+<h2>About Me</h2>
+<p>
+Welcome to my website. This is my personal project created using HTML and CSS.
+</p>
+</div>
+
+
+<div class="card">
+<h2>My Services</h2>
+<p>
+✔ Website Design<br>
+✔ Music & Video Projects<br>
+✔ Technology Updates
+</p>
+</div>
+
+
+<div class="card">
+<h2>Contact</h2>
+<p>
+You can contact me for more information.
+</p>
+
+<button>Contact Me</button>
+
+</div>
+
+</div>
+
+
+<footer>
+<p>© 2026 My Website | All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
