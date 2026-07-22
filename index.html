@@ -2,48 +2,85 @@
 <html>
 <head>
 <title>AJ Music Hub</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 body{
+margin:0;
+font-family:Arial;
 background:linear-gradient(135deg,#020617,#2563eb,#9333ea);
 color:white;
-font-family:Arial;
-text-align:center;
-padding:40px;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .box{
+width:90%;
+max-width:420px;
 background:#111827;
 padding:25px;
-border-radius:20px;
-max-width:400px;
-margin:auto;
+border-radius:25px;
+text-align:center;
+box-shadow:0 0 30px black;
 }
 
 h1{
 color:#38bdf8;
+font-size:32px;
 }
 
-label{
+.upload{
 background:#06b6d4;
 padding:15px 25px;
-border-radius:20px;
+border-radius:30px;
 display:inline-block;
 cursor:pointer;
+font-weight:bold;
 }
 
 input{
 display:none;
 }
 
+#name{
+color:#facc15;
+margin-top:20px;
+}
+
 audio{
 width:100%;
 margin-top:20px;
 }
+
+button{
+background:#38bdf8;
+border:0;
+color:white;
+padding:12px 20px;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+font-size:18px;
+}
+
+.download{
+display:inline-block;
+background:#22c55e;
+padding:12px 20px;
+border-radius:20px;
+color:white;
+text-decoration:none;
+margin-top:15px;
+}
+
 </style>
 
 </head>
+
 
 <body>
 
@@ -51,14 +88,26 @@ margin-top:20px;
 
 <h1>🎧 AJ Music Hub</h1>
 
-<label>
+<label class="upload">
 📂 Choose Song
-<input type="file" id="song" accept="audio/*">
+<input type="file" id="song" accept="audio/mp3,audio/*">
 </label>
 
-<p id="name"></p>
 
-<audio id="player" controls></audio>
+<p id="name">No song selected</p>
+
+
+<audio id="player" controls preload="metadata"></audio>
+
+
+<br>
+
+<button onclick="playSong()">▶️ Play</button>
+
+
+<a id="download" class="download" style="display:none;">
+⬇️ Download
+</a>
 
 
 </div>
@@ -66,32 +115,45 @@ margin-top:20px;
 
 <script>
 
-const song = document.getElementById("song");
-const player = document.getElementById("player");
-const name = document.getElementById("name");
+let song=document.getElementById("song");
+let player=document.getElementById("player");
+let name=document.getElementById("name");
+let download=document.getElementById("download");
 
 
-song.addEventListener("change", function(){
+song.addEventListener("change",function(){
 
-const file = this.files[0];
+let file=this.files[0];
 
 if(file){
 
-name.innerHTML = "🎵 " + file.name;
+let url=URL.createObjectURL(file);
 
-const url = URL.createObjectURL(file);
+name.innerHTML="🎵 "+file.name;
 
-player.src = url;
+player.src=url;
 
 player.load();
 
-}player.load();
-player.play();
+download.href=url;
+
+download.download=file.name;
+
+download.style.display="inline-block";
+
+}
 
 });
+
+
+function playSong(){
+
+player.play();
+
+}
 
 </script>
 
 
 </body>
-</html>
+  </html>
