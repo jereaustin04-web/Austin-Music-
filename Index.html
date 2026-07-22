@@ -107,3 +107,17 @@ download.style.display="inline-block";
 
 </body>
 </html>
+<script>
+let song = document.getElementById("song");
+let player = document.getElementById("player");
+
+song.onchange = function(){
+  let file = this.files[0];
+
+  if(file){
+    let url = URL.createObjectURL(file);
+    player.src = url;
+    player.play();
+  }
+}
+ </script>
