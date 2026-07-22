@@ -1,68 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
+<title>AJ Music</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Austin Website</title>
-
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #333;
+body{
+background:#111827;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:30px;
 }
 
-header {
-    background: linear-gradient(135deg, #007bff, #00c6ff);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
+.box{
+background:#1f2937;
+padding:25px;
+border-radius:20px;
 }
 
-header h1 {
-    font-size: 40px;
-    margin: 0;
+h1{
+color:#00d9ff;
 }
 
-header p {
-    font-size: 18px;
+button, label{
+background:#00d9ff;
+color:white;
+padding:12px 25px;
+border-radius:10px;
+border:none;
+font-size:16px;
+cursor:pointer;
 }
 
-.container {
-    padding: 30px;
-    max-width: 1000px;
-    margin: auto;
+audio{
+width:100%;
+margin-top:25px;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
+.download{
+display:none;
+background:#22c55e;
+padding:12px 20px;
+border-radius:10px;
+color:white;
+text-decoration:none;
+margin-top:20px;
+display:inline-block;
 }
 </style>
 
@@ -70,48 +54,56 @@ footer {
 
 <body>
 
-<header>
-<h1>Welcome To My Website</h1>
-<p>Creative • Modern • Professional</p>
-</header>
+<div class="box">
 
+<h1>🎵 AJ Music Player</h1>
 
-<div class="container">
+<label>
+📂 Choose Song
+<input type="file" id="song" accept="audio/*" hidden>
+</label>
 
-<div class="card">
-<h2>About Me</h2>
-<p>
-Welcome to my website. This is my personal project created using HTML and CSS.
-</p>
-</div>
+<br><br>
 
+<audio id="player" controls></audio>
 
-<div class="card">
-<h2>My Services</h2>
-<p>
-✔ Website Design<br>
-✔ Music & Video Projects<br>
-✔ Technology Updates
-</p>
-</div>
+<br>
 
-
-<div class="card">
-<h2>Contact</h2>
-<p>
-You can contact me for more information.
-</p>
-
-<button>Contact Me</button>
-
-</div>
+<a id="download" class="download">
+⬇️ Download Song
+</a>
 
 </div>
 
 
-<footer>
-<p>© 2026 My Website | All Rights Reserved</p>
-</footer>
+<script>
+
+let song=document.getElementById("song");
+let player=document.getElementById("player");
+let download=document.getElementById("download");
+
+
+song.onchange=function(){
+
+let file=this.files[0];
+
+if(file){
+
+let url=URL.createObjectURL(file);
+
+player.src=url;
+
+download.href=url;
+
+download.download=file.name;
+
+download.style.display="inline-block";
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
