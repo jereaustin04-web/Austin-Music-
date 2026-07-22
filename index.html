@@ -1,52 +1,45 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>AJ Music</title>
+<title>AJ Music Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-background:#111827;
+background:linear-gradient(135deg,#020617,#2563eb,#9333ea);
 color:white;
 font-family:Arial;
 text-align:center;
-padding:30px;
+padding:40px;
 }
 
 .box{
-background:#1f2937;
+background:#111827;
 padding:25px;
 border-radius:20px;
+max-width:400px;
+margin:auto;
 }
 
 h1{
-color:#00d9ff;
+color:#38bdf8;
 }
 
-button, label{
-background:#00d9ff;
-color:white;
-padding:12px 25px;
-border-radius:10px;
-border:none;
-font-size:16px;
+label{
+background:#06b6d4;
+padding:15px 25px;
+border-radius:20px;
+display:inline-block;
 cursor:pointer;
+}
+
+input{
+display:none;
 }
 
 audio{
 width:100%;
-margin-top:25px;
-}
-
-.download{
-display:none;
-background:#22c55e;
-padding:12px 20px;
-border-radius:10px;
-color:white;
-text-decoration:none;
 margin-top:20px;
-display:inline-block;
 }
 </style>
 
@@ -56,68 +49,48 @@ display:inline-block;
 
 <div class="box">
 
-<h1>🎵 AJ Music Player</h1>
+<h1>🎧 AJ Music Hub</h1>
 
 <label>
 📂 Choose Song
-<input type="file" id="song" accept="audio/*" hidden>
+<input type="file" id="song" accept="audio/*">
 </label>
 
-<br><br>
+<p id="name"></p>
 
 <audio id="player" controls></audio>
 
-<br>
-
-<a id="download" class="download">
-⬇️ Download Song
-</a>
 
 </div>
 
 
 <script>
 
-let song=document.getElementById("song");
-let player=document.getElementById("player");
-let download=document.getElementById("download");
+const song = document.getElementById("song");
+const player = document.getElementById("player");
+const name = document.getElementById("name");
 
 
-song.onchange=function(){
+song.addEventListener("change", function(){
 
-let file=this.files[0];
+const file = this.files[0];
 
 if(file){
 
-let url=URL.createObjectURL(file);
+name.innerHTML = "🎵 " + file.name;
 
-player.src=url;
+const url = URL.createObjectURL(file);
 
-download.href=url;
+player.src = url;
 
-download.download=file.name;
-
-download.style.display="inline-block";
+player.load();
 
 }
 
-}
+});
 
 </script>
 
+
 </body>
 </html>
-<script>
-let song = document.getElementById("song");
-let player = document.getElementById("player");
-
-song.onchange = function(){
-  let file = this.files[0];
-
-  if(file){
-    let url = URL.createObjectURL(file);
-    player.src = url;
-    player.play();
-  }
-}
- </script>
